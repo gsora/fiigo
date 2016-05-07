@@ -11,4 +11,5 @@ type Firmware struct {
 	Reader *bufio.Reader
 	Path   string
 	Header Structure
+	Files  []FileEntry
 }
