@@ -22,3 +22,7 @@ _testmain.go
 *.exe
 *.test
 *.prof
+
+# unpacked firmware, used for testing
+fw/*
+fw
