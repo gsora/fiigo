@@ -6,7 +6,7 @@ import (
 )
 
 // FileList return a FileEntry array
-func (f *Firmware) FileList() []FileEntry {
+func (f *Firmware) FileList() {
 	r := []FileEntry{}
 
 	for i := 0; i < int(f.Header.NumberOfFiles); i++ {
@@ -18,5 +18,5 @@ func (f *Firmware) FileList() []FileEntry {
 		r = append(r, FileEntry{Path: filePath, StartSector: startSector, Size: fileSize})
 	}
 
-	return r
+	f.Files = r
 }
