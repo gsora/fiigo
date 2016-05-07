@@ -46,6 +46,7 @@ func (f *Firmware) ReadHeader(fwPath string) error {
 	}
 
 	f.Reader = fwreader
+	f.Path = fwPath
 	s := Structure{}
 	s.HeaderStartToken = string(title)
 
