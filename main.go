@@ -22,8 +22,7 @@ func main() {
 	f := new(firmware.Firmware)
 	f.ReadHeader(fwPath)
 	fmt.Println(f.Header)
-	for _, i := range f.FileList() {
-		fmt.Println(i)
-	}
+	f.FileList()
+	f.Unpack("./fw")
 
 }
