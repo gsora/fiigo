@@ -1,6 +1,7 @@
 package firmware
 
 import (
+	"fmt"
 	"log"
 	"os"
 	"strings"
@@ -15,7 +16,23 @@ func (f *Firmware) Unpack(dest string) {
 	}
 
 	for _, i := range f.Files {
-		createTree(dest + "/" + strings.Replace(i.Path, "\\", "/", -1))
+		path := strings.Replace(i.Path, "\\", "/", -1)
+
+		createTree(dest + "/" + path)
+	}
+
+	for _, i := range f.Files {
+
+		path := strings.Replace(i.Path, "\\", "/", -1)
+
+		fmt.Println("Unpacking " + path)
+		fDest, _ := os.Create(dest + "/" + path)
+
+		data := make([]byte, i.Size)
+		f.File.Seek(i.StartSector*f.Header.FilesystemSectorSize, 0)
+		f.File.Read(data)
+		fDest.Write(data)
+		fDest.Close()
 	}
 }
 
