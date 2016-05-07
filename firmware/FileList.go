@@ -10,7 +10,14 @@ func (f *Firmware) FileList() {
 	r := []FileEntry{}
 
 	for i := 0; i < int(f.Header.NumberOfFiles); i++ {
-		filePath := string(seekAndRead(f.Reader, 56, false))
+		filePathSlice := seekAndRead(f.Reader, 56, false)
+		filePath := ""
+		for _, element := range filePathSlice {
+			if element != 0 {
+				filePath = filePath + string(element)
+			}
+		}
+		//filePath := string(seekAndRead(f.Reader, 56, false))
 		startSectorSlice := seekAndRead(f.Reader, 4, true)
 		startSector, _ := strconv.ParseInt("0x"+hex.EncodeToString(startSectorSlice), 0, 64)
 		fileSizeSlice := seekAndRead(f.Reader, 4, true)
