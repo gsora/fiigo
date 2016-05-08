@@ -26,3 +26,7 @@ _testmain.go
 # unpacked firmware, used for testing
 fw/*
 fw
+x1.fw*
+
+# OS X things
+.DS_Store
