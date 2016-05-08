@@ -23,6 +23,5 @@ func main() {
 	f.ReadHeader(fwPath)
 	fmt.Println(f.Header)
 	f.FileList()
-	f.Unpack("./fw")
 
 }
