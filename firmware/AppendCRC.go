@@ -86,4 +86,6 @@ func AppendCRC(filename string) error {
 	if err != nil {
 		return err
 	}
+
+	return nil
 }
