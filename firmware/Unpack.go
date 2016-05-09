@@ -1,10 +1,11 @@
 package firmware
 
 import (
-	"fmt"
 	"log"
 	"os"
 	"strings"
+
+	"github.com/fatih/color"
 )
 
 // Unpack unpack the firmware in the destination directory
@@ -25,7 +26,7 @@ func (f *Firmware) Unpack(dest string) {
 
 		path := strings.Replace(i.Path, "\\", "/", -1)
 
-		fmt.Println("Unpacking " + path)
+		color.Blue("Unpacking " + path)
 		fDest, _ := os.Create(dest + "/" + path)
 
 		data := make([]byte, i.Size)
